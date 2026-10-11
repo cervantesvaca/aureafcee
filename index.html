@@ -5,267 +5,981 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AUREA — Belleza que inspira</title>
 
-<!-- ===== ETIQUETAS PARA REDES SOCIALES (OPEN GRAPH) ===== -->
+<!-- ===== OPEN GRAPH ===== -->
 <meta property="og:title" content="AUREA — Belleza que inspira">
 <meta property="og:description" content="Cabello, piel y maquillaje AUREA. Descubre nuestro catálogo completo.">
+<!-- Reemplazar por una imagen 1200x630 propia cuando la tengas -->
 <meta property="og:image" content="https://i.ibb.co/6jCv2nG/banner.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AUREA — Belleza que inspira">
 <meta name="twitter:description" content="Cabello, piel y maquillaje AUREA. Descubre nuestro catálogo completo.">
 <meta name="twitter:image" content="https://i.ibb.co/6jCv2nG/banner.jpg">
-<!-- ===== FIN ETIQUETAS REDES SOCIALES ===== -->
+<!-- ===== FIN OPEN GRAPH ===== -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --bg:#FBF6F1;
-    --paper:#FFFDFB;
-    --ink:#2A1B1F;
+    --bg:#F5F0E8;
+    --paper:#FCFAF6;
+    --ink:#14100D;
+    --muted:#7A736C;
     --wine:#6E1E32;
     --wine-deep:#4A121F;
-    --gold:#A6813C;
+    --gold:#A88A4A;
     --rose:#EFDDD6;
     --corporal:#C98A5E;
-    --muted:#8B7A76;
-    --line: rgba(42,27,31,0.12);
-    --radius: 3px;
+    --line:rgba(20,16,13,0.12);
+    --line-strong:rgba(20,16,13,0.28);
+    --radius:0;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+
+  html, body{
+    overflow-x:hidden;
+    max-width:100vw;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  img, svg, video{
+    max-width:100%;
+    height:auto;
+    display:block;
+  }
 
   body{
     margin:0;
     background:var(--bg);
     color:var(--ink);
-    font-family:'Work Sans', sans-serif;
-    line-height:1.55;
+    font-family:'Jost', system-ui, sans-serif;
+    font-size:15.5px;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
   }
-  h1,h2,h3,.serif{ font-family:'Fraunces', serif; font-weight:450; margin:0; }
+  h1,h2,h3,h4,.serif{
+    font-family:'Instrument Serif', Georgia, serif;
+    font-weight:400;
+    margin:0;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  h3,h4{ line-height:1.2; letter-spacing:0; }
   a{color:inherit;}
-  button, input{ font-family:inherit; }
+  button, input, select, textarea{ font-family:inherit; }
   :focus-visible{ outline:2px solid var(--wine); outline-offset:3px; }
+  ::selection{ background:var(--wine); color:var(--paper); }
 
-  .wrap{ max-width:1140px; margin:0 auto; padding:0 28px; }
+  .wrap{ max-width:1200px; margin:0 auto; padding:0 32px; }
+  section{ padding:64px 0; border-top:1px solid var(--line); scroll-margin-top:80px; }
+  section:first-of-type{ border-top:none; }
 
-  /* NAV */
+  /* ============ HEADER ============ */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(251,246,241,0.92);
-    backdrop-filter: blur(6px);
+    background:rgba(245,240,232,0.88);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  nav.wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    padding-top:18px; padding-bottom:18px;
-    gap:20px; flex-wrap:wrap;
+ nav.wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  padding-top:clamp(14px, 1.5vw, 20px);
+  padding-bottom:clamp(14px, 1.5vw, 20px);
+  gap:clamp(12px, 2vw, 24px);
+  flex-wrap:wrap;
+}
+  .logo{
+    font-family:'Instrument Serif', serif;
+    font-size:1.7rem;
+    letter-spacing:0.01em;
+    font-style:italic;
   }
-  .logo{ font-family:'Fraunces', serif; font-size:1.5rem; letter-spacing:0.02em; }
-  .navlinks{ display:flex; gap:28px; flex-wrap:wrap; }
+  .logo::after{
+    content:'·';
+    color:var(--wine);
+    margin-left:2px;
+    font-style:normal;
+  }
+  .navlinks{ display:flex; gap:26px; flex-wrap:wrap; }
   .navlinks a{
-    text-decoration:none; font-size:0.92rem; color:var(--ink);
-    border-bottom:1px solid transparent; padding-bottom:3px;
+    text-decoration:none;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
   }
-  .navlinks a:hover{ border-bottom-color:var(--wine); }
+  .navlinks a:hover{ color:var(--ink); border-bottom-color:var(--wine); }
 
-  /* HERO (BANNER) */
-  .hero{ padding:0; }
-  .hero img{ width:100%; height:auto; display:block; }
+  .cart-btn{
+    background:transparent;
+    border:1px solid var(--line-strong);
+    padding:8px 16px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    cursor:pointer;
+    color:var(--ink);
+    border-radius:0;
+    transition:all .2s;
+  }
+  .cart-btn:hover{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .cart-btn b{ color:var(--wine); font-weight:500; }
+  .cart-btn:hover b{ color:var(--gold); }
 
-  section{ padding:72px 0; border-top:1px solid var(--line); }
-  .section-head{ max-width:60ch; margin-bottom:40px; }
-  .section-head .kicker{ color:var(--wine); font-size:0.85rem; margin-bottom:10px; }
-  .section-head h2{ font-size:clamp(1.8rem, 3vw, 2.5rem); }
-  .section-head p{ color:var(--muted); margin-top:12px; }
+  /* ============ HERO ============ */
+ .hero{
+  padding:clamp(48px, 6vw, 88px) 0 clamp(56px, 7vw, 96px);
+  border-top:none;
+  position:relative;
+  text-align:center;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:clamp(12px, 1.5vw, 24px);
+  left:50%;
+  transform:translateX(-50%);
+  width:min(90%, 640px);
+  height:1px;
+  background:linear-gradient(to right, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+  opacity:0.5;
+}
+.hero-meta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:'JetBrains Mono', monospace;
+  font-size:clamp(0.62rem, 0.4vw + 0.55rem, 0.72rem);
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:clamp(20px, 3vw, 32px);
+}
+.hero-meta::before{
+  content:'';
+  width:6px; height:6px;
+  background:var(--wine);
+  border-radius:50%;
+  flex-shrink:0;
+}
+.hero-title{
+  font-size:clamp(2.2rem, 6.5vw, 5.4rem);
+  line-height:1;
+  letter-spacing:-0.02em;
+  margin:0 auto clamp(20px, 2.5vw, 32px);
+  max-width:18ch;
+}
+.hero-title em{
+  font-style:italic;
+  color:var(--wine);
+}
+.hero-sub{
+  max-width:52ch;
+  margin:0 auto clamp(28px, 3.5vw, 44px);
+  color:var(--muted);
+  font-size:clamp(17px, 0.5vw + 16px, 19px);
+  line-height:1.5;
+}
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+}
 
-  /* IMAGEN DEL PRODUCTO */
+  /* ============ BOTONES ============ */
+  .btn{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--paper);
+    border:1px solid var(--ink);
+    padding:15px 26px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    border-radius:0;
+    cursor:pointer;
+    text-decoration:none;
+    transition:background .2s, color .2s, border-color .2s, transform .2s;
+  }
+  .btn:hover:not(:disabled){
+    background:var(--wine);
+    border-color:var(--wine);
+    transform:translateY(-1px);
+  }
+  .btn:disabled{ opacity:0.35; cursor:not-allowed; }
+  .btn.ghost{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--line-strong);
+  }
+  .btn.ghost:hover:not(:disabled){
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .btn.sm{ padding:10px 14px; font-size:0.68rem; flex:1; letter-spacing:0.12em; }
+
+  /* ============ SECTION HEADS ============ */
+  .section-head{ max-width:720px; margin-bottom:44px; }
+  .section-head .kicker{
+    display:flex; align-items:center; gap:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:24px;
+  }
+  .section-head .kicker::before{
+    content:'';
+    width:32px; height:1px;
+    background:var(--gold);
+    flex-shrink:0;
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 4.5vw, 3.4rem);
+    line-height:1.04;
+    letter-spacing:-0.015em;
+    margin-bottom:18px;
+  }
+  .section-head h2 em{ font-style:italic; color:var(--wine); }
+  .section-head p{ color:var(--muted); margin:0; font-size:1rem; max-width:56ch; }
+  .kicker{ /* fallback por si se usa solo */
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  
+  /* ============ TIPOGRAFÍA EDITORIAL (Cormorant Italic) ============ */
+.hero-sub,
+.section-head p,
+.about p,
+.welcome-banner{
+  font-family:'Cormorant Garamond', Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:19px;
+  line-height:1.5;
+  letter-spacing:0.005em;
+}
+  
+  
+
+  /* ============ ABOUT ============ */
+ .about{ display:grid; grid-template-columns:1.3fr 1fr; gap:72px; align-items:center; }
+ 
+  .about h2{
+    font-size:clamp(1.9rem, 3.6vw, 2.8rem);
+    line-height:1.05;
+    margin-bottom:24px;
+    letter-spacing:-0.015em;
+  }
+  .about h3{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--wine);
+    font-weight:500;
+    margin:40px 0 12px;
+  }
+.about p{ color:var(--muted); margin:0 0 16px; font-size:19px; }
+  .mv{ display:grid; gap:0; }
+  .mv div{
+    padding:28px 0;
+    border-top:1px solid var(--line);
+  }
+  .mv div:first-child{ border-top:none; padding-top:0; }
+  .mv div:last-child{ padding-bottom:0; }
+  .mv h3{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--wine);
+    margin:0 0 10px;
+    font-weight:500;
+  }
+.mv p{
+  color:var(--muted);
+  margin:0;
+  font-size:0.95rem;
+  font-family:'Jost', sans-serif;
+  font-style:normal;
+}
+
+  /* ============ CATÁLOGO ============ */
+  .cat-tabs{
+    display:flex; gap:6px; margin-bottom:36px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    padding-bottom:0;
+  }
+  .cat-tab{
+    padding:12px 20px;
+    border:none;
+    background:transparent;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+    margin-bottom:-1px;
+    transition:color .2s, border-color .2s;
+  }
+  .cat-tab:hover{ color:var(--ink); }
+  .cat-tab[aria-pressed="true"]{
+    color:var(--ink);
+    border-bottom-color:var(--wine);
+  }
+
+  .tools{
+    display:flex; gap:12px; flex-wrap:wrap;
+    margin-bottom:36px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--line);
+  }
+  .tools input, .tools select, .f-input, textarea{
+    border:1px solid var(--line-strong);
+    background:transparent;
+    padding:12px 16px;
+   font-family:'Jost', sans-serif;    /* ✅ */
+    font-size:0.88rem;
+    color:var(--ink);
+    border-radius:0;
+    outline:none;
+    transition:border-color .2s;
+  }
+  .tools input{ flex:1; min-width:220px; }
+  .tools input:focus, .tools select:focus, .f-input:focus, textarea:focus{
+    border-color:var(--wine);
+  }
+  .tools input::placeholder{ color:var(--muted); }
+
+  .count{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:32px;
+  }
+
+  /* ============ PRODUCT GRID ============ */
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(270px, 1fr));
+    gap:48px 32px;
+  }
+  .product-card{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    transition:transform .3s ease;
+  }
+  .product-card:hover{ transform:translateY(-3px); }
   .product-image{
     width:100%;
     aspect-ratio:1 / 1;
-    background:var(--bg);
+    background:var(--paper);
     border:1px solid var(--line);
-    border-radius:var(--radius);
     overflow:hidden;
     display:flex;
     align-items:center;
     justify-content:center;
-    margin-bottom:6px;
+    position:relative;
+    transition:border-color .3s;
   }
+  .product-card:hover .product-image{ border-color:var(--line-strong); }
   .product-image img{
     width:100%; height:100%;
     object-fit:cover;
     display:block;
+    transition:transform .6s cubic-bezier(.2,.7,.2,1);
   }
+  .product-card:hover .product-image img{ transform:scale(1.04); }
   .product-image.no-img{
-    background:var(--rose);
+    background:linear-gradient(135deg, #F0EAE0 0%, #E5DCCD 100%);
     color:var(--wine);
-    font-family:'Fraunces', serif;
-    font-size:0.85rem;
-    letter-spacing:0.15em;
-    text-transform:uppercase;
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-size:1.7rem;
+    letter-spacing:0.04em;
+  }
+  .product-image.no-img::before{
+    content:'';
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(110,30,50,0.12);
+    pointer-events:none;
   }
 
-  /* PRODUCT GRID */
-  .cat-tabs{ display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap; }
-  .cat-tab{
-    padding:8px 18px; border:1px solid var(--line); border-radius:20px;
-    background:var(--paper); font-size:0.88rem; cursor:pointer;
+  .swatch{
+    width:28px; height:2px;
+    margin-bottom:2px;
   }
-  .cat-tab[aria-pressed="true"]{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
-
-  .product-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-  .product-card{ background:var(--paper); padding:26px; display:flex; flex-direction:column; gap:10px; }
-  .swatch{ width:34px; height:6px; border-radius:3px; }
   .swatch.cabello{ background:var(--gold); }
   .swatch.piel{ background:#C9A9AE; }
   .swatch.maquillaje{ background:var(--wine); }
   .swatch.corporal{ background:var(--corporal); }
-  .product-card h3{ font-size:1.08rem; font-weight:500; }
-  .product-card .desc{ color:var(--muted); font-size:0.88rem; flex-grow:1; }
-  .product-row{ display:flex; align-items:baseline; justify-content:space-between; margin-top:6px; }
-  .price{ font-family:'Fraunces', serif; font-size:1.15rem; color:var(--wine-deep); }
-  .cat-label{ font-size:0.76rem; color:var(--muted); text-transform:none; }
 
-  /* BUDGET */
+  .cat-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:-2px;
+  }
+  .product-card h3{
+    font-family:'Instrument Serif', serif;
+    font-size:1.22rem;
+    font-weight:400;
+    line-height:1.2;
+    letter-spacing:0;
+    color:var(--ink);
+  }
+  .product-card .desc{
+    color:var(--muted);
+    font-size:0.85rem;
+    flex-grow:1;
+  }
+  .product-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:6px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+  }
+  .price{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.98rem;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .unit{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    color:var(--muted);
+    text-align:right;
+  }
+  .card-actions{
+    display:flex; gap:8px; margin-top:12px;
+  }
+
+  /* ============ BUDGET ============ */
   .budget-panel{
-    background:var(--paper); border:1px solid var(--line); padding:36px;
-    display:grid; grid-template-columns: 320px 1fr; gap:36px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:48px;
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:56px;
   }
-  .field label{ display:block; font-size:0.88rem; margin-bottom:8px; color:var(--muted); }
+  .field label{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:12px;
+  }
   .amount-input{
-    display:flex; align-items:center; border:1px solid var(--ink); border-radius:var(--radius);
-    padding:4px 4px 4px 16px; background:var(--paper);
+    display:flex;
+    align-items:center;
+    border-bottom:2px solid var(--ink);
+    padding:6px 0 10px;
+    background:transparent;
+    transition:border-color .2s;
   }
-  .amount-input span{ color:var(--muted); font-size:0.95rem; margin-right:6px; }
+  .amount-input:focus-within{ border-bottom-color:var(--wine); }
+  .amount-input span{
+    font-family:'Instrument Serif', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--muted);
+    margin-right:8px;
+  }
   .amount-input input{
-    border:none; outline:none; font-size:1.4rem; padding:10px 0; width:100%;
-    font-family:'Fraunces', serif; background:transparent; color:var(--ink);
+    border:none; outline:none;
+    font-size:2rem;
+    padding:0;
+    width:100%;
+    font-family:'Instrument Serif', serif;
+    background:transparent;
+    color:var(--ink);
+    letter-spacing:-0.01em;
   }
+  .amount-input input::placeholder{ color:var(--line-strong); }
+  .budget-panel .btn{ margin-top:32px; width:100%; text-align:center; }
 
-  /* Botón base */
-  .btn{
-    background:var(--wine);
-    color:var(--paper);
-    border:1px solid var(--wine);
-    padding:12px 22px;
-    font-size:0.95rem;
-    border-radius:var(--radius);
-    cursor:pointer;
-    transition:background 0.15s ease, border-color 0.15s ease;
-  }
-  .btn:hover:not(:disabled){ background:var(--wine-deep); border-color:var(--wine-deep); }
-  .btn:disabled{ opacity:0.45; cursor:not-allowed; }
-  .budget-panel .btn{ margin-top:16px; width:100%; text-align:center; }
   #budgetResults{ min-height:60px; }
-  .empty-note{ color:var(--muted); font-size:0.92rem; }
-  .combo-card{ border:1px solid var(--line); padding:20px; margin-bottom:14px; background:var(--bg); }
-  .combo-card h4{ font-family:'Fraunces', serif; font-weight:450; font-size:1.05rem; margin-bottom:10px; }
-  .combo-items{ display:flex; flex-direction:column; gap:6px; font-size:0.9rem; }
-  .combo-item{ display:flex; justify-content:space-between; }
-  .combo-total{ display:flex; justify-content:space-between; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-weight:600; }
+  .empty-note{ color:var(--muted); font-size:0.92rem; font-style:italic; }
+  .combo-card{
+    border:1px solid var(--line);
+    padding:24px;
+    margin-bottom:16px;
+    background:var(--bg);
+  }
+  .combo-card h4{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    font-weight:500;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--wine);
+    margin-bottom:16px;
+  }
+  .combo-items{ display:flex; flex-direction:column; gap:8px; font-size:0.88rem; }
+  .combo-item{ display:flex; justify-content:space-between; gap:16px; }
+  .combo-total{
+    display:flex; justify-content:space-between;
+    margin-top:16px; padding-top:14px;
+    border-top:1px solid var(--line);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    font-weight:500;
+    letter-spacing:0.04em;
+  }
   .single-list{ display:flex; flex-wrap:wrap; gap:8px; }
   .single-list span{
-    border:1px solid var(--line); padding:6px 12px; border-radius:20px; font-size:0.84rem; background:var(--bg);
+    border:1px solid var(--line);
+    padding:8px 14px;
+    font-size:0.78rem;
+    background:transparent;
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.04em;
   }
 
-  .survey-q{ margin-bottom:24px; }
-  .survey-q .q-label{ display:block; font-size:0.9rem; margin-bottom:10px; color:var(--ink); font-weight:500; }
+  /* ============ SURVEY / FORM ============ */
+  .form-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:48px;
+    max-width:820px;
+  }
+  .grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-bottom:36px;
+  }
+  .grid2 label{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .f-input, textarea{ width:100%; }
+
+  .survey-q{ margin-bottom:32px; }
+  .survey-q .q-label{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:14px;
+    font-weight:500;
+  }
   .survey-options{ display:flex; flex-wrap:wrap; gap:8px; }
   .survey-opt{
-    border:1px solid var(--line); background:var(--paper);
-    padding:8px 16px; border-radius:20px; font-size:0.86rem; cursor:pointer;
-    color:var(--ink); transition:all 0.15s ease;
+    border:1px solid var(--line-strong);
+    background:transparent;
+    padding:10px 18px;
+     font-family:'Jost', sans-serif;    /* ✅ */
+    font-size:0.82rem;
+    cursor:pointer;
+    color:var(--ink);
+    border-radius:0;
+    transition:all .2s;
   }
-  .survey-opt:hover{ border-color:var(--wine); }
+  .survey-opt:hover{ border-color:var(--wine); color:var(--wine); }
   .survey-opt[aria-pressed="true"]{
-    background:var(--wine); color:var(--paper); border-color:var(--wine);
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
   }
-  .survey-actions{ display:flex; gap:12px; align-items:center; margin-top:30px; flex-wrap:wrap; }
+  .survey-actions{
+    display:flex; gap:16px; align-items:center;
+    margin-top:36px; flex-wrap:wrap;
+  }
   .survey-skip{
-    background:transparent; border:none; color:var(--muted);
-    font-size:0.85rem; cursor:pointer; text-decoration:underline;
-    padding:12px 0;
+    background:transparent;
+    border:none;
+    color:var(--muted);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    cursor:pointer;
+    padding:10px 0;
+    border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
   }
-  .survey-skip:hover{ color:var(--ink); }
+  .survey-skip:hover{ color:var(--wine); border-bottom-color:var(--wine); }
+  .note{
+    font-size:0.78rem;
+    color:var(--muted);
+    margin-top:16px;
+    font-style:italic;
+  }
+  .msg{
+    color:var(--wine);
+    font-size:0.88rem;
+    margin-top:12px;
+    min-height:1.2em;
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.02em;
+  }
 
-  /* Aviso de bienvenida personalizado arriba del catálogo */
   .welcome-banner{
     background:var(--rose);
-    border-left:3px solid var(--wine);
-    padding:16px 22px;
-    margin-bottom:28px;
-    font-size:0.92rem;
-    border-radius:var(--radius);
+    border-left:2px solid var(--wine);
+    padding:22px 26px;
+    margin-bottom:32px;
+    font-size:0.95rem;
     display:none;
   }
   .welcome-banner.show{ display:block; }
-  .welcome-banner strong{ color:var(--wine-deep); }
+  .welcome-banner strong{ color:var(--wine-deep); font-weight:600; }
 
-
-
-  footer{ border-top:1px solid var(--line); padding:48px 0; }
-  .foot-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:center; }
-  .foot-grid p{ color:var(--muted); font-size:0.85rem; }
-
-  @media (max-width: 860px){
-    .product-grid{ grid-template-columns:1fr 1fr; }
-    .budget-panel{ grid-template-columns:1fr; }
+  .rec-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
+    gap:16px;
+    margin-top:24px;
   }
-  @media (max-width: 540px){
-    .product-grid{ grid-template-columns:1fr; }
+  .rec{
+    border:1px solid var(--line);
+    background:var(--paper);
+    padding:20px;
+    font-size:0.88rem;
+    transition:transform .2s, border-color .2s;
   }
-  .kicker{ color:var(--wine); font-size:0.85rem; margin-bottom:10px; }
-  .navlinks{ gap:20px; }
-  .cart-btn{ background:none; border:1px solid var(--ink); border-radius:20px; padding:6px 14px; font-size:0.88rem; cursor:pointer; color:var(--ink); }
-  .cart-btn b{ color:var(--wine); }
-  .about{ display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:start; }
-  .about h2{ font-size:clamp(1.8rem,3vw,2.5rem); margin-bottom:14px; }
-  .about p,.mv p{ margin:0; color:var(--muted); }
-  .mv{ display:grid; gap:16px; }
-  .mv div{ background:var(--paper); border:1px solid var(--line); padding:24px; border-radius:var(--radius); }
-  .mv h3{ color:var(--wine); margin-bottom:6px; }
-  .tools{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px; }
-  .tools input{ flex:1; min-width:200px; }
-  .f-input,.tools select,.tools input,textarea{ border:1px solid var(--line); background:var(--paper); padding:10px 14px; border-radius:var(--radius); font-size:0.9rem; color:var(--ink); font-family:inherit; }
-  .f-input,textarea{ width:100%; }
-  .count{ color:var(--muted); font-size:0.85rem; margin-bottom:14px; }
-  .unit{ font-size:0.78rem; color:var(--muted); }
-  .card-actions{ display:flex; gap:8px; margin-top:8px; }
-  .btn.sm{ padding:8px 12px; font-size:0.82rem; flex:1; }
-  .btn.ghost{ background:transparent; color:var(--wine); }
-  .btn.ghost:hover:not(:disabled){ background:var(--rose); color:var(--wine-deep); border-color:var(--wine); }
-  .form-card{ background:var(--paper); border:1px solid var(--line); padding:36px; max-width:760px; }
-  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
-  .grid2 label{ display:block; font-size:0.88rem; color:var(--muted); margin-bottom:6px; }
-  .note{ font-size:0.8rem; color:var(--muted); margin-top:12px; }
-  .msg{ color:var(--wine); font-size:0.88rem; margin-top:10px; min-height:1.2em; }
-  .rec-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px; margin-top:18px; }
-  .rec{ border:1px solid var(--line); background:var(--paper); padding:14px; font-size:0.88rem; }
-  .cmt{ border-bottom:1px solid var(--line); padding:14px 0; }
-  .charts{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-bottom:20px; }
-  .chart{ background:var(--paper); border:1px solid var(--line); padding:24px; }
-  .chart h3{ font-size:1.05rem; margin-bottom:14px; }
-  .bars .row{ display:grid; grid-template-columns:120px 1fr 72px; gap:10px; align-items:center; font-size:0.84rem; margin-bottom:8px; }
-  .bar{ height:10px; background:var(--rose); border-radius:5px; overflow:hidden; }
-  .bar i{ display:block; height:100%; background:var(--wine); }
-  .drawer{ position:fixed; top:0; right:0; height:100%; width:min(400px,100%); background:var(--paper); border-left:1px solid var(--line); z-index:120; transform:translateX(100%); transition:transform 0.25s; display:flex; flex-direction:column; padding:24px; }
-  .drawer.open{ transform:none; box-shadow:-20px 0 60px rgba(42,27,31,0.2); }
-  .drawer-body{ flex:1; overflow:auto; }
-  .ci{ display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px solid var(--line); font-size:0.88rem; }
-  .qty{ white-space:nowrap; }
-  .qty button{ width:26px; height:26px; border:1px solid var(--line); background:var(--bg); cursor:pointer; }
-  .modal{ position:fixed; inset:0; z-index:130; background:rgba(42,27,31,0.55); display:none; align-items:center; justify-content:center; padding:20px; }
+  .rec:hover{ transform:translateY(-2px); border-color:var(--line-strong); }
+
+  /* ============ COMENTARIOS ============ */
+  .cmt{
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .cmt strong{ font-family:'Instrument Serif', serif; font-size:1.05rem; font-weight:400; }
+  .cmt p{ margin:8px 0 0; color:var(--muted); font-size:0.92rem; }
+
+  /* ============ CHARTS ============ */
+  .charts{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:24px;
+    margin-bottom:24px;
+  }
+  .chart{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:32px;
+  }
+  .chart h3{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+    margin-bottom:22px;
+  }
+  .bars .row{
+    display:grid;
+    grid-template-columns:130px 1fr 80px;
+    gap:14px;
+    align-items:center;
+    font-size:0.8rem;
+    margin-bottom:12px;
+  }
+  .bars .row > span:first-child{ color:var(--ink); }
+  .bars .row > span:last-child{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--muted);
+    text-align:right;
+  }
+  .bar{
+    height:6px;
+    background:var(--line);
+    overflow:hidden;
+  }
+  .bar i{
+    display:block;
+    height:100%;
+    background:var(--ink);
+    transition:width .6s ease;
+  }
+
+  /* ============ DRAWER CARRITO ============ */
+  .drawer{
+    position:fixed;
+    top:0; right:0;
+    height:100%;
+    width:min(420px, 100%);
+    background:var(--paper);
+    border-left:1px solid var(--line);
+    z-index:120;
+    transform:translateX(100%);
+    transition:transform .3s cubic-bezier(.2,.7,.2,1);
+    display:flex;
+    flex-direction:column;
+    padding:32px;
+  }
+  .drawer.open{
+    transform:none;
+    box-shadow:-30px 0 80px rgba(20,16,13,0.18);
+  }
+  .drawer h3{
+    font-size:1.6rem;
+    font-style:italic;
+  }
+  .drawer-body{ flex:1; overflow:auto; padding:16px 0; }
+  .ci{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.88rem;
+  }
+  .ci small{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--muted);
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+  }
+  .qty{ white-space:nowrap; display:inline-flex; align-items:center; gap:6px; }
+  .qty button{
+    width:26px; height:26px;
+    border:1px solid var(--line-strong);
+    background:transparent;
+    cursor:pointer;
+    font-size:0.9rem;
+    transition:all .15s;
+  }
+  .qty button:hover{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+
+  /* ============ MODAL COMPARADOR ============ */
+  .modal{
+    position:fixed; inset:0; z-index:130;
+    background:rgba(20,16,13,0.55);
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
   .modal.open{ display:flex; }
-  .modal-card{ background:var(--paper); padding:28px; max-width:900px; width:100%; max-height:90vh; overflow:auto; }
-  table.cmp{ width:100%; border-collapse:collapse; font-size:0.88rem; }
-  .cmp th,.cmp td{ border:1px solid var(--line); padding:10px; text-align:left; vertical-align:top; }
-  .cmp-bar{ position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:90; display:none; gap:8px; }
+  .modal-card{
+    background:var(--paper);
+    padding:40px;
+    max-width:1000px;
+    width:100%;
+    max-height:90vh;
+    overflow:auto;
+    border:1px solid var(--line);
+  }
+  .modal-card h3{ font-size:1.8rem; font-style:italic; }
+  table.cmp{
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.85rem;
+    margin-top:8px;
+  }
+  .cmp th, .cmp td{
+    border-bottom:1px solid var(--line);
+    padding:14px 12px;
+    text-align:left;
+    vertical-align:top;
+  }
+  .cmp th{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+  }
+  .cmp tr:first-child th{ border-bottom:1px solid var(--line-strong); color:var(--ink); font-size:0.75rem; }
+
+  .cmp-bar{
+    position:fixed;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:90;
+    display:none;
+    gap:0;
+    background:var(--ink);
+    padding:0;
+    box-shadow:0 20px 60px rgba(20,16,13,0.35);
+  }
   .cmp-bar.show{ display:flex; }
-  @media (max-width:860px){ .about,.grid2{ grid-template-columns:1fr; } .form-card{ padding:24px; } }
+  .cmp-bar .btn{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--paper);
+    padding:14px 22px;
+  }
+  .cmp-bar .btn:hover{ background:var(--wine); border-color:var(--wine); }
+  .cmp-bar .btn.ghost{
+    background:transparent;
+    color:rgba(252,250,246,0.7);
+    border-left:1px solid rgba(252,250,246,0.15);
+  }
+  .cmp-bar .btn.ghost:hover{ background:transparent; color:var(--paper); }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:1px solid var(--line);
+    padding:56px 0;
+  }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    align-items:center;
+  }
+  .foot-grid p{
+    color:var(--muted);
+    font-size:0.78rem;
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.08em;
+    margin:0;
+  }
+
+/* ============ RESPONSIVE ============ */
+
+/* Pantallas grandes (hasta 1200px) — laptops pequeñas */
+@media (max-width: 1200px){
+  .wrap{ padding:0 28px; }
+  .product-grid{ grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:40px 28px; }
+}
+
+/* Tablets horizontales y laptops (hasta 1024px) */
+@media (max-width: 1024px){
+  .about{ grid-template-columns:1fr; gap:40px; }
+  .mv{ padding-top:0; position:static; }
+  .budget-panel{ grid-template-columns:1fr; padding:36px; gap:32px; }
+  section{ padding:56px 0; }
+  .hero{ padding:80px 0 72px; }
+  .hero-title{ font-size:clamp(2.4rem, 6vw, 4rem); }
+  .product-grid{ grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:36px 24px; }
+}
+
+/* Tablets verticales (hasta 860px) */
+@media (max-width: 860px){
+  .wrap{ padding:0 24px; }
+  .navlinks{ display:none; }
+  .grid2{ grid-template-columns:1fr; gap:20px; }
+  .form-card{ padding:36px 28px; }
+  .modal-card{ padding:32px 24px; }
+  .drawer{ padding:28px 24px; width:min(380px, 100%); }
+  .charts{ grid-template-columns:1fr; }
+  .bars .row{ grid-template-columns:110px 1fr 70px; font-size:0.76rem; }
+  .hero-meta{ margin-bottom:28px; }
+  .hero-sub{ font-size:18px; }
+  section{ padding:48px 0; }
+  .hero{ padding:64px 0 56px; }
+  .section-head{ margin-bottom:36px; }
+  .product-grid{ grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:32px 20px; }
+}
+
+/* Móviles grandes (hasta 640px) */
+@media (max-width: 640px){
+  .wrap{ padding:0 20px; }
+  section{ padding:40px 0; }
+  .hero{ padding:56px 0 48px; }
+  .hero-title{ font-size:clamp(2rem, 9vw, 3rem); }
+  .hero-sub{ font-size:17px; max-width:100%; }
+  .hero-actions{ flex-direction:column; align-items:stretch; }
+  .hero-actions .btn{ width:100%; text-align:center; }
+  .product-grid{ grid-template-columns:repeat(2, 1fr); gap:28px 16px; }
+  .form-card{ padding:28px 20px; }
+  .budget-panel{ padding:28px 20px; }
+  .modal-card{ padding:24px 18px; }
+  .section-head h2{ font-size:clamp(1.8rem, 8vw, 2.4rem); }
+  .section-head p,
+  .about p{ font-size:17px; }
+  .about h2{ font-size:clamp(1.6rem, 7vw, 2.2rem); }
+  .combo-card{ padding:18px; }
+  .chart{ padding:24px 20px; }
+  .bars .row{ grid-template-columns:90px 1fr 56px; font-size:0.72rem; gap:10px; }
+  .cat-tabs{ gap:2px; }
+  .cat-tab{ padding:10px 14px; font-size:0.66rem; }
+  .tools{ gap:10px; }
+  .tools input, .tools select{ font-size:0.85rem; padding:10px 14px; }
+  .cmp-bar{ left:16px; right:16px; transform:none; width:auto; }
+  .cmp-bar .btn{ flex:1; padding:12px 14px; }
+}
+
+/* Móviles pequeños (hasta 420px) */
+@media (max-width: 420px){
+  .wrap{ padding:0 16px; }
+  section{ padding:36px 0; }
+  .hero{ padding:48px 0 40px; }
+  .hero-title{ font-size:clamp(1.8rem, 10vw, 2.4rem); }
+  .product-grid{ grid-template-columns:1fr; gap:32px 0; }
+  .logo{ font-size:1.4rem; }
+  .cart-btn{ padding:6px 12px; font-size:0.66rem; }
+  .survey-opt{ padding:8px 14px; font-size:0.78rem; }
+  .btn{ padding:13px 20px; font-size:0.68rem; }
+  .btn.sm{ padding:9px 12px; font-size:0.64rem; }
+  .combo-item{ font-size:0.82rem; flex-direction:column; gap:2px; }
+  .combo-item span:last-child{ color:var(--muted); font-size:0.78rem; }
+  .single-list span{ font-size:0.72rem; padding:6px 10px; }
+  .modal-card{ padding:20px 14px; }
+  .drawer{ padding:20px 16px; }
+}
+
+/* Pantallas muy altas y angostas (móviles en landscape) */
+@media (max-height: 500px) and (orientation: landscape){
+  .hero{ padding:40px 0 32px; }
+  .hero-title{ font-size:2rem; }
+  .hero-sub{ display:none; }
+}
+
+/* Pantallas ultra anchas (monitores 4K) */
+@media (min-width: 1600px){
+  .wrap{ max-width:1320px; }
+  .hero-title{ font-size:5rem; }
+}
 </style>
 </head>
 <body>
@@ -274,36 +988,77 @@
   <nav class="wrap">
     <div class="logo">Aurea</div>
     <div class="navlinks">
-      <a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#presupuesto">Calculadora</a>
-      <a href="#encuesta">Encuesta</a><a href="#comentarios">Comentarios</a><a href="#resultados">Resultados</a>
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#presupuesto">Calculadora</a>
+      <a href="#encuesta">Encuesta</a>
+      <a href="#comentarios">Comentarios</a>
+      <a href="#resultados">Resultados</a>
     </div>
-    <button class="cart-btn" id="cartOpen">Carrito (<b id="cartCount">0</b>)</button>
+    <button class="cart-btn" id="cartOpen">Carrito · <b id="cartCount">0</b></button>
   </nav>
 </header>
 
-<section class="hero"><img src="https://i.ibb.co/6jCv2nG/banner.jpg" alt="Banner AUREA"></section>
-
-<section id="inicio">
-  <div class="wrap about">
-    <div>
-      <div class="kicker">Bienvenida</div>
-      <h2>Belleza que inspira, precios que se entienden.</h2>
-      <p>AUREA es una tienda virtual de cuidado de la piel, cabello y maquillaje con precios en bolivianos. Aquí puedes explorar el catálogo, comparar productos, calcular qué alcanzas con tu presupuesto y enviarnos tu pedido por WhatsApp.</p>
-      <h3 style="margin:28px 0 8px;">Quiénes somos</h3>
-      <p>[EDITAR: nombres del grupo, carrera y universidad]. Somos estudiantes de Economía y creamos AUREA como proyecto académico para entender cómo deciden y compran las personas.</p>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-meta">
+      <span>Bolivia · MMXXVI</span>
     </div>
-    <div class="mv">
-      <div><h3>Misión</h3><p>[EDITAR] Ofrecer una experiencia de compra clara y accesible de productos de belleza, ayudando a cada persona a elegir según su necesidad y presupuesto.</p></div>
-      <div><h3>Visión</h3><p>[EDITAR] Ser una plataforma de referencia en Bolivia que combina belleza, información de precios y análisis del consumidor.</p></div>
+    <h1 class="hero-title">
+      Belleza que <em>inspira</em>,<br>
+      precios que se <em>entienden</em>.
+    </h1>
+    <p class="hero-sub">
+      Productos de belleza con precios claros en bolivianos.
+      Arma tu pedido por WhatsApp.
+    </p>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn">Explorar catálogo →</a>
+      <a href="#presupuesto" class="btn ghost">Calcular presupuesto</a>
     </div>
   </div>
 </section>
 
+<!-- ============ INICIO / ABOUT ============ -->
+<section id="inicio">
+  <div class="wrap about">
+    <div>
+      <div class="section-head" style="margin-bottom:32px;">
+        <div class="kicker">01 — Bienvenida</div>
+        <h2>Un proyecto que mezcla <em>belleza</em> y economía.</h2>
+      </div>
+      <p>AUREA es una tienda boliviana de belleza dedicada a reunir, en un solo lugar, productos de cuidado de la piel, cabello, maquillaje y cuidado corporal con precios claros y en bolivianos.</p>
+      <p>Nacimos con una convicción simple: comprar belleza debería ser fácil, transparente y sin sorpresas. Por eso cada producto de nuestro catálogo está acompañado de su precio real, su categoría y su costo por unidad, para que puedas decidir con información, no con intuición.</p>
+      <p>En AUREA no solo vendemos: también ofrecemos herramientas para que compres mejor. Nuestra calculadora de presupuesto arma combinaciones según lo que tengas disponible, el comparador enfrenta productos lado a lado y nuestro buzón recoge la voz de cada cliente para seguir mejorando.</p>
+      <p>Atendemos pedidos por WhatsApp y trabajamos para que la belleza, en Bolivia, sea accesible, bien informada y bien elegida.</p>
+    </div>
+    <div class="mv">
+      
+	  
+	  
+	  
+	  
+	  
+	  
+	  <div>
+        <h3>Misión</h3>
+        <p>Ofrecer una experiencia de compra clara, curada y accesible de productos de belleza, ayudando a cada persona a elegir según su necesidad real y su presupuesto.</p>
+      </div>
+      <div>
+        <h3>Visión</h3>
+        <p>Consolidarnos como una tienda de referencia en Bolivia que combina belleza, transparencia de precios y herramientas de decisión para el consumidor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATÁLOGO ============ -->
 <section id="catalogo">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">Nuestros productos</div>
-      <h2>El catálogo completo AUREA.</h2>
+      <div class="kicker">02 — Nuestros productos</div>
+      <h2>El catálogo <em>completo</em> AUREA.</h2>
       <p>Busca, filtra, compara y arma tu pedido. Precios en bolivianos.</p>
     </div>
     <div class="cat-tabs" id="catTabs">
@@ -328,11 +1083,12 @@
   </div>
 </section>
 
+<!-- ============ PRESUPUESTO ============ -->
 <section id="presupuesto">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">Calculadora</div>
-      <h2>¿Qué puedo comprar con lo que tengo?</h2>
+      <div class="kicker">03 — Calculadora</div>
+      <h2>¿Qué puedo comprar con lo que <em>tengo</em>?</h2>
       <p>Ingresa tu monto, elige las categorías y te mostramos las mejores combinaciones.</p>
     </div>
     <div class="budget-panel">
@@ -341,7 +1097,7 @@
           <label for="budgetInput">Monto disponible</label>
           <div class="amount-input"><span>Bs.</span><input type="number" id="budgetInput" placeholder="250" min="0" inputmode="decimal"></div>
         </div>
-        <p class="note" style="margin-bottom:8px;">Categorías a incluir:</p>
+        <p class="note" style="margin:28px 0 12px;">Categorías a incluir:</p>
         <div class="survey-options" id="calcCats">
           <button class="survey-opt" data-cat="cabello" aria-pressed="true">Cabello</button>
           <button class="survey-opt" data-cat="piel" aria-pressed="true">Piel</button>
@@ -355,11 +1111,12 @@
   </div>
 </section>
 
+<!-- ============ ENCUESTA ============ -->
 <section id="encuesta">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">Encuesta</div>
-      <h2>Cuéntanos de ti y te recomendamos.</h2>
+      <div class="kicker">04 — Encuesta</div>
+      <h2>Cuéntanos de ti y te <em>recomendamos</em>.</h2>
       <p>Responde y te mostramos una selección según tu interés y presupuesto.</p>
     </div>
     <div class="form-card" id="surveyForm">
@@ -381,17 +1138,18 @@
       <div class="msg" id="surveyMsg"></div>
       <p class="note">Tus datos se usan solo con fines académicos y estadísticos del proyecto AUREA, y no se publican.</p>
     </div>
-    <div class="welcome-banner" id="recMsg" style="margin-top:28px;"></div>
+    <div class="welcome-banner" id="recMsg" style="margin-top:32px;"></div>
     <div class="rec-grid" id="recs"></div>
-    <button class="btn ghost" id="goCat" style="margin-top:18px;" hidden>Ver más en el catálogo</button>
+    <button class="btn ghost" id="goCat" style="margin-top:24px;" hidden>Ver más en el catálogo</button>
   </div>
 </section>
 
+<!-- ============ COMENTARIOS ============ -->
 <section id="comentarios">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">Buzón</div>
-      <h2>Tu opinión nos ayuda a mejorar.</h2>
+      <div class="kicker">05 — Buzón</div>
+      <h2>Tu opinión nos ayuda a <em>mejorar</em>.</h2>
       <p>Déjanos un comentario, una sugerencia o cuéntanos qué producto te gustaría ver.</p>
     </div>
     <div class="form-card">
@@ -399,20 +1157,21 @@
         <div><label for="cName">Nombre (opcional)</label><input class="f-input" id="cName"></div>
         <div><label for="cRate">Valoración</label><select class="f-input" id="cRate"><option value="5">★★★★★ Excelente</option><option value="4">★★★★ Muy buena</option><option value="3">★★★ Buena</option><option value="2">★★ Regular</option><option value="1">★ Mala</option></select></div>
       </div>
-      <label for="cText" style="display:block;font-size:0.88rem;color:var(--muted);margin-bottom:6px;">Comentario *</label>
+      <label for="cText" style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Comentario *</label>
       <textarea id="cText" rows="4" maxlength="500"></textarea>
-      <button class="btn" id="cBtn" style="margin-top:16px;">Enviar comentario</button>
+      <button class="btn" id="cBtn" style="margin-top:24px;">Enviar comentario</button>
       <div class="msg" id="cMsg"></div>
     </div>
-    <div id="cmtList" style="max-width:760px;margin-top:24px;"></div>
+    <div id="cmtList" style="max-width:820px;margin-top:36px;"></div>
   </div>
 </section>
 
+<!-- ============ RESULTADOS ============ -->
 <section id="resultados">
   <div class="wrap">
     <div class="section-head">
-      <div class="kicker">Análisis de mercado</div>
-      <h2>Lo que dicen los datos.</h2>
+      <div class="kicker">06 — Análisis de mercado</div>
+      <h2>Lo que dicen los <em>datos</em>.</h2>
       <p>Resumen del catálogo (oferta) y de las respuestas de la encuesta (demanda).</p>
     </div>
     <div class="charts" id="chartsCat"></div>
@@ -427,35 +1186,47 @@
   </div>
 </footer>
 
+<!-- ============ DRAWER CARRITO ============ -->
 <aside class="drawer" id="drawer" aria-label="Carrito">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><h3>Tu carrito</h3><button class="survey-skip" id="cartClose">Cerrar</button></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+    <h3>Tu carrito</h3>
+    <button class="survey-skip" id="cartClose">Cerrar</button>
+  </div>
   <div class="drawer-body" id="cartBody"></div>
   <div class="combo-total"><span>Total</span><span id="cartTotal">Bs. 0</span></div>
-  <button class="btn" id="waBtn" style="margin-top:14px;" disabled>Enviar pedido por WhatsApp</button>
-  <button class="survey-skip" id="cartClear">Vaciar carrito</button>
+  <button class="btn" id="waBtn" style="margin-top:18px;" disabled>Enviar pedido por WhatsApp</button>
+  <button class="survey-skip" id="cartClear" style="margin-top:8px;text-align:left;">Vaciar carrito</button>
 </aside>
-<div class="modal" id="cmpModal"><div class="modal-card">
-  <div style="display:flex;justify-content:space-between;margin-bottom:14px;"><h3>Comparador</h3><button class="survey-skip" data-close>Cerrar</button></div>
-  <div id="cmpBody" style="overflow:auto;"></div>
-</div></div>
-<div class="cmp-bar" id="cmpBar"><button class="btn" id="cmpOpen">Comparar (0)</button><button class="btn ghost" id="cmpClear" style="background:var(--paper);">Limpiar</button></div>
+
+<!-- ============ MODAL COMPARADOR ============ -->
+<div class="modal" id="cmpModal">
+  <div class="modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <h3>Comparador</h3>
+      <button class="survey-skip" data-close>Cerrar</button>
+    </div>
+    <div id="cmpBody" style="overflow:auto;"></div>
+  </div>
+</div>
+
+<div class="cmp-bar" id="cmpBar">
+  <button class="btn" id="cmpOpen">Comparar (0)</button>
+  <button class="btn ghost" id="cmpClear">Limpiar</button>
+</div>
 
 <script>
 /* ============================================================
    CONFIGURACIÓN
-   ============================================================
-   1) SHEET_CSV_URL → URL del CSV de tu Google Sheet (catálogo).
-   2) SURVEY_ENDPOINT → URL de tu Apps Script (guarda encuestas).
    ============================================================ */
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWPMZtT9u6KCFtadMUIRW66eNP2wxTf_0Ts857VeOAW5XQ297w_wCXY8h6SRPm2HKGF8UySxcsy-SL/pub?gid=0&single=true&output=csv';
 const SHEET_CACHE_KEY = 'aurea_sheet_cache_v1';
 const SURVEY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz3aX87kd75LOLsF2Q_rDVqRl4lLrqE-vlTAS3CcTX8MH8oEvixMD9_oDX8DbsK8K-NdA/exec';
-const WA_NUMBER = '59164533938';   // WhatsApp con código de país, sin + ni espacios
-const COMMENTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWPMZtT9u6KCFtadMUIRW66eNP2wxTf_0Ts857VeOAW5XQ297w_wCXY8h6SRPm2HKGF8UySxcsy-SL/pub?gid=1166456797&single=true&output=csv';       // CSV publicado de la hoja de comentarios (opcional)
-const RESULTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWPMZtT9u6KCFtadMUIRW66eNP2wxTf_0Ts857VeOAW5XQ297w_wCXY8h6SRPm2HKGF8UySxcsy-SL/pub?gid=478168901&single=true&output=csv';        // CSV publicado de respuestas SIN datos personales (opcional)
+const WA_NUMBER = '59163445869';
+const COMMENTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWPMZtT9u6KCFtadMUIRW66eNP2wxTf_0Ts857VeOAW5XQ297w_wCXY8h6SRPm2HKGF8UySxcsy-SL/pub?gid=1166456797&single=true&output=csv';
+const RESULTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWPMZtT9u6KCFtadMUIRW66eNP2wxTf_0Ts857VeOAW5XQ297w_wCXY8h6SRPm2HKGF8UySxcsy-SL/pub?gid=478168901&single=true&output=csv';
 
 /* ------------------------------------------------------------
-   DATOS DE RESPALDO (solo se usan si el Sheet no carga)
+   DATOS DE RESPALDO
    ------------------------------------------------------------ */
 const FALLBACK_PRODUCTS = [
   {id:'AUREA-0001',name:'Primer Facial Astra Zen Routine Face Primer Nro. 01 Veil X 30Ml',brand:'Astra',cat:'piel',sub:'Primer',price:75,tier:'Económico'},
@@ -476,7 +1247,6 @@ const FALLBACK_PRODUCTS = [
    ESTADO Y UTILIDADES
    ============================================================ */
 let PRODUCTS = FALLBACK_PRODUCTS.slice();
-let currentFilter = 'todos';
 
 const CAT_LABEL = { cabello:'Cabello', piel:'Piel & Facial', maquillaje:'Maquillaje', corporal:'Corporal' };
 const fmt = (n) => 'Bs. ' + (+n).toFixed(2).replace(/\.00$/, '');
@@ -639,7 +1409,7 @@ function renderGrid(cat){
   else if(F.sort === 'desc') L.sort((a, b) => b.price - a.price);
   else if(F.sort === 'unit') L = L.filter(p => p.unit).sort((a, b) => a.unit.per100 - b.unit.per100);
   $('count').textContent = L.length + (L.length === 1 ? ' producto' : ' productos');
-  $('productGrid').innerHTML = L.length ? L.map(card).join('') : '<p class="empty-note" style="padding:26px;background:var(--paper);">No hay productos con esos filtros.</p>';
+  $('productGrid').innerHTML = L.length ? L.map(card).join('') : '<p class="empty-note" style="padding:40px 0;">No hay productos con esos filtros.</p>';
   document.querySelectorAll('.cat-tab').forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === F.cat ? 'true' : 'false'));
 }
 function setProducts(list){
@@ -667,7 +1437,7 @@ function post(f){
 }
 
 /* ============================================================
-   CALCULADORA (varias combinaciones)
+   CALCULADORA
    ============================================================ */
 let combos = [];
 $('budgetBtn').addEventListener('click', () => {
@@ -687,19 +1457,19 @@ $('budgetBtn').addEventListener('click', () => {
   combos = top.sort((x, y) => y.total - x.total).slice(0, 3);
   const aff = PRODUCTS.filter(p => cats.includes(p.cat) && p.price <= b).sort((x, y) => y.price - x.price);
   let html = '';
-  if(combos.length){
+   if(combos.length){
     combos.forEach((c, i) => {
       html += `<div class="combo-card"><h4>Combo ${i + 1}</h4><div class="combo-items">` +
         c.items.map(it => `<div class="combo-item"><span>${esc(it.name)} <span style="color:var(--muted)">(${esc(CAT_LABEL[it.cat] || it.cat)})</span></span><span>${fmt(it.price)}</span></div>`).join('') +
         `</div><div class="combo-total"><span>Total</span><span>${fmt(c.total)}</span></div>` +
-        `<div class="combo-total" style="border-top:none;padding-top:0;font-weight:400;color:var(--muted);font-size:0.85rem;"><span>Te sobran</span><span>${fmt(b - c.total)}</span></div>` +
-        `<button class="btn sm" style="margin-top:10px;width:100%;" data-combo="${i}">Agregar combo al carrito</button></div>`;
+        `<div class="combo-total" style="border-top:none;padding-top:0;font-weight:400;color:var(--muted);font-size:0.78rem;font-family:'Jost',sans-serif;letter-spacing:0;"><span>Te sobran</span><span>${fmt(b - c.total)}</span></div>` +
+        `<button class="btn sm" style="margin-top:16px;width:100%;" data-combo="${i}">Agregar combo al carrito</button></div>`;
     });
   } else if(cats.length > 1){
     html += '<p class="empty-note">No hay una combinación con todas esas categorías para ese monto. Prueba con menos categorías o un monto mayor.</p>';
   }
   html += aff.length
-    ? `<div><h4 class="serif" style="margin:14px 0 10px;">Productos que alcanzas individualmente</h4><div class="single-list">${aff.map(p => `<span>${esc(p.name)} · ${fmt(p.price)}</span>`).join('')}</div></div>`
+    ? `<div><h4 class="serif" style="margin:24px 0 14px;font-size:1.1rem;">Productos que alcanzas individualmente</h4><div class="single-list">${aff.map(p => `<span>${esc(p.name)} · ${fmt(p.price)}</span>`).join('')}</div></div>`
     : `<p class="empty-note">Con ${fmt(b)} aún no alcanza ningún producto de esas categorías.</p>`;
   el.innerHTML = html;
 });
@@ -725,7 +1495,7 @@ function showRecs(d){
     .sort((a, b) => sk(a) - sk(b) || a.price - b.price).slice(0, 6);
   $('recMsg').innerHTML = `Gracias, <strong>${esc(d.nombre)}</strong>. ` + (L.length ? 'Esta es tu selección según tu interés y presupuesto:' : 'No hay productos en ese rango; explora el catálogo completo.');
   $('recMsg').classList.add('show');
-  $('recs').innerHTML = L.map(p => `<div class="rec"><strong>${esc(p.name)}</strong><br><span class="unit">${esc(p.brand)}</span><div class="product-row"><span class="price">${fmt(p.price)}</span><button class="btn sm ghost" style="flex:none;" data-add="${esc(p.id)}">Agregar</button></div></div>`).join('');
+  $('recs').innerHTML = L.map(p => `<div class="rec"><strong style="font-family:'Instrument Serif',serif;font-weight:400;font-size:1.05rem;">${esc(p.name)}</strong><br><span class="unit">${esc(p.brand)}</span><div class="product-row"><span class="price">${fmt(p.price)}</span><button class="btn sm ghost" style="flex:none;" data-add="${esc(p.id)}">Agregar</button></div></div>`).join('');
   $('goCat').hidden = false; $('goCat').dataset.cat = (d.interes && d.interes !== 'todos') ? d.interes : 'todos';
 }
 $('surveyBtn').addEventListener('click', () => {
@@ -747,7 +1517,7 @@ const stars = (n) => { n = Math.min(5, Math.max(0, n)); return '★'.repeat(n) +
 function renderCmts(){
   const L = [...store.get('aurea_cmts', []), ...REMOTE_CMTS];
   $('cmtList').innerHTML = L.length
-    ? L.map(c => `<div class="cmt"><strong>${esc(c.nombre || 'Anónimo')}</strong> <span style="color:var(--gold)">${stars(+c.valoracion || 5)}</span><p style="margin:6px 0 0;">${esc(c.comentario)}</p></div>`).join('')
+    ? L.map(c => `<div class="cmt"><strong>${esc(c.nombre || 'Anónimo')}</strong> <span style="color:var(--gold);letter-spacing:0.1em;">${stars(+c.valoracion || 5)}</span><p>${esc(c.comentario)}</p></div>`).join('')
     : '<p class="empty-note">Aún no hay comentarios. ¡Sé la primera persona en escribir!</p>';
 }
 $('cBtn').addEventListener('click', () => {
@@ -764,7 +1534,7 @@ async function cargarComentarios(){
 }
 
 /* ============================================================
-   RESULTADOS (gráficos de barras)
+   RESULTADOS
    ============================================================ */
 function bars(title, data, f = (v) => v){
   const e = Object.entries(data).sort((a, b) => b[1] - a[1]).slice(0, 8), mx = Math.max(1, ...e.map(x => x[1]));
@@ -815,7 +1585,7 @@ $('cmpClear').addEventListener('click', () => { cmp = []; $('cmpBar').classList.
 $('waBtn').addEventListener('click', () => {
   const items = Object.keys(cart).map(id => ({ p: byId(id), q: cart[id] })).filter(x => x.p);
   const total = items.reduce((s, x) => s + x.p.price * x.q, 0);
-    post({ Formulario:'pedido', Items: items.map(x => x.q + 'x ' + x.p.name).join(' | '), Cantidad: items.reduce((s, x) => s + x.q, 0), Total: total.toFixed(2) });
+  post({ Formulario:'pedido', Items: items.map(x => x.q + 'x ' + x.p.name).join(' | '), Cantidad: items.reduce((s, x) => s + x.q, 0), Total: total.toFixed(2) });
   const txt = 'Hola AUREA, quiero hacer este pedido:\n' + items.map(x => `- ${x.q} x ${x.p.name} (${fmt(x.p.price)})`).join('\n') + '\nTotal: ' + fmt(total);
   window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(txt), '_blank');
 });
