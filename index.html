@@ -79,10 +79,21 @@
   :focus-visible{ outline:2px solid var(--wine); outline-offset:3px; }
   ::selection{ background:var(--wine); color:var(--paper); }
 
-  .wrap{ max-width:1200px; margin:0 auto; padding:0 32px; }
+ .wrap{ max-width:1200px; margin:0 auto; padding:0 32px; }
   section{ padding:64px 0; border-top:1px solid var(--line); scroll-margin-top:80px; }
   section:first-of-type{ border-top:none; }
 
+  /* ============ FONDO DE CONTENIDO ============ */
+  .fondo-contenido{
+    background-image:
+      linear-gradient(rgba(245,240,232,0.88), rgba(245,240,232,0.88)),
+      url('fondo.avif');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
   /* ============ HEADER ============ */
   header{
     position:sticky; top:0; z-index:50;
@@ -981,6 +992,14 @@
     .navlinks{ display:none; }
   .menu-btn{ display:flex; }
   .mobile-menu{ display:block; }
+  .fondo-contenido{
+    background-attachment: scroll;
+    background-image:
+      linear-gradient(rgba(245,240,232,0.92), rgba(245,240,232,0.92)),
+      url('fondo.avif');
+    background-size: cover;
+    background-position: center top;
+  }
   .grid2{ grid-template-columns:1fr; gap:20px; }
   .form-card{ padding:36px 28px; }
   .modal-card{ padding:32px 24px; }
@@ -1102,12 +1121,15 @@
       Productos de belleza con precios claros en bolivianos.
       Arma tu pedido por WhatsApp.
     </p>
-    <div class="hero-actions">
+  
+      <div class="hero-actions">
       <a href="#catalogo" class="btn">Explorar catálogo →</a>
       <a href="#presupuesto" class="btn ghost">Calcular presupuesto</a>
     </div>
   </div>
 </section>
+
+<div class="fondo-contenido">
 
 <!-- ============ INICIO / ABOUT ============ -->
 <section id="inicio">
@@ -1267,6 +1289,8 @@
     <div class="charts" id="chartsSurvey"></div>
   </div>
 </section>
+
+</div><!-- cierra .fondo-contenido -->
 
 <footer>
   <div class="wrap foot-grid">
