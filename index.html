@@ -84,14 +84,26 @@
   section:first-of-type{ border-top:none; }
 
   /* ============ FONDO DE CONTENIDO ============ */
-  .fondo-contenido{
+    .fondo-contenido{
     background-image:
-      linear-gradient(rgba(245,240,232,0.88), rgba(245,240,232,0.88)),
-      url('fondo.jpg');
+      linear-gradient(rgba(245,240,232,0.92), rgba(245,240,232,0.92)),
+      url('fondo.avif');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+  }
+  /* Texto más oscuro sobre el fondo */
+  .fondo-contenido .about p,
+  .fondo-contenido .section-head p,
+  .fondo-contenido .count,
+  .fondo-contenido .cat-label,
+  .fondo-contenido .product-card .desc,
+  .fondo-contenido .mv p,
+  .fondo-contenido .cmt p,
+  .fondo-contenido .empty-note,
+  .fondo-contenido .bars .row > span:first-child{
+    color: var(--ink);
   }
   
   /* ============ HEADER ============ */
@@ -992,11 +1004,11 @@
     .navlinks{ display:none; }
   .menu-btn{ display:flex; }
   .mobile-menu{ display:block; }
-  .fondo-contenido{
+    .fondo-contenido{
     background-attachment: scroll;
     background-image:
-      linear-gradient(rgba(245,240,232,0.92), rgba(245,240,232,0.92)),
-      url('fondo.jpg');
+      linear-gradient(rgba(245,240,232,0.95), rgba(245,240,232,0.95)),
+      url('fondo.avif');
     background-size: cover;
     background-position: center top;
   }
