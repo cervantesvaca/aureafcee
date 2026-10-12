@@ -84,10 +84,8 @@
   section:first-of-type{ border-top:none; }
 
   /* ============ FONDO DE CONTENIDO ============ */
-    .fondo-contenido{
-    background-image:
-      linear-gradient(rgba(245,240,232,0.92), rgba(245,240,232,0.92)),
-      url('fondo.jpg');
+      .fondo-contenido{
+    background-image: url('fondo.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -1004,13 +1002,14 @@
     .navlinks{ display:none; }
   .menu-btn{ display:flex; }
   .mobile-menu{ display:block; }
-    .fondo-contenido{
+          .fondo-contenido{
     background-attachment: scroll;
     background-image:
-      linear-gradient(rgba(245,240,232,0.95), rgba(245,240,232,0.95)),
+      linear-gradient(rgba(245,240,232,0.78), rgba(245,240,232,0.78)),
       url('fondo.jpg');
     background-size: cover;
-    background-position: center top;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
   .grid2{ grid-template-columns:1fr; gap:20px; }
   .form-card{ padding:36px 28px; }
