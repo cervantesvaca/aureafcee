@@ -84,8 +84,10 @@
   section:first-of-type{ border-top:none; }
 
   /* ============ FONDO DE CONTENIDO ============ */
-      .fondo-contenido{
-    background-image: url('fondo.jpg');
+         .fondo-contenido{
+    background-image:
+      linear-gradient(rgba(245,240,232,0.80), rgba(245,240,232,0.80)),
+      url('fondo.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -1002,11 +1004,9 @@
     .navlinks{ display:none; }
   .menu-btn{ display:flex; }
   .mobile-menu{ display:block; }
-          .fondo-contenido{
+            .fondo-contenido{
     background-attachment: scroll;
-    background-image:
-      linear-gradient(rgba(245,240,232,0.78), rgba(245,240,232,0.78)),
-      url('fondo.jpg');
+    background-image: url('fondo.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
