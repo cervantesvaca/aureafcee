@@ -206,6 +206,11 @@ footer{border-top:1px solid var(--line);padding:50px 0}
 .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center}
 .foot-grid p{color:var(--muted);font-size:.78rem;font-family:'JetBrains Mono',monospace;margin:0}
 
+/* ===== SISTEMA DE PESTAÑAS (NUEVO) ===== */
+.fondo-contenido > section { display: none; border-top: 0; }
+.fondo-contenido > section.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
 /* ===== CELULARES / TABLETS ===== */
 @media (max-width:1024px){.about{grid-template-columns:1fr;gap:36px}.budget-panel{grid-template-columns:1fr;padding:32px;gap:28px}}
 @media (max-width:900px){
@@ -220,10 +225,9 @@ footer{border-top:1px solid var(--line);padding:50px 0}
   main,footer{margin-left:0}
   .cmp-bar{left:50%}
   .fondo-contenido{background-attachment:scroll;background-image:linear-gradient(rgba(247,236,223,.9),rgba(247,236,223,.9)),url('fondo-movil.jpg');background-position:center top}
-  .wrap{padding:0 20px}section{padding:46px 0}
-  .grid2{grid-template-columns:1fr;gap:18px}
-  .form-card{padding:30px 22px}
+  .wrap{padding:0 20px}
   .hero-sub{font-size:18px}
+  .fondo-contenido > section { padding: 46px 0; }
 }
 @media (max-width:640px){
   .hero-actions{flex-direction:column;align-items:stretch}
@@ -244,7 +248,7 @@ footer{border-top:1px solid var(--line);padding:50px 0}
 <header>
   <div class="logo-wrap"><div class="logo">Aurea</div></div>
   <nav class="navlinks" id="navlinks" aria-label="Menú principal">
-    <a href="#inicio">Inicio</a>
+    <a href="#inicio" class="on">Inicio</a>
     <a href="#catalogo">Catálogo</a>
     <a href="#presupuesto">Calculadora</a>
     <a href="#encuesta">Registro</a>
@@ -270,17 +274,16 @@ footer{border-top:1px solid var(--line);padding:50px 0}
 
 <div class="fondo-contenido">
 
-<section id="inicio">
+<section id="inicio" class="active">
   <div class="wrap about">
     <div>
       <div class="section-head" style="margin-bottom:30px">
         <div class="kicker">01 — Bienvenida</div>
         <h2>Un proyecto que mezcla <em>belleza</em> y economía.</h2>
       </div>
-      <p>AUREA es una tienda boliviana de belleza dedicada a reunir, en un solo lugar, productos de cuidado de la piel, cabello, maquillaje y cuidado corporal con precios claros y en bolivianos.</p>
-      <p>Nacimos con una convicción simple: comprar belleza debería ser fácil, transparente y sin sorpresas. Por eso cada producto de nuestro catálogo está acompañado de su precio real, su categoría y su costo por unidad, para que puedas decidir con información, no con intuición.</p>
-      <p>En AUREA no solo vendemos: también ofrecemos herramientas para que compres mejor. Nuestra calculadora de presupuesto arma combinaciones según lo que tengas disponible, el comparador enfrenta productos lado a lado y nuestro buzón recoge la voz de cada cliente para seguir mejorando.</p>
-      <p>Atendemos pedidos por WhatsApp y trabajamos para que la belleza, en Bolivia, sea accesible, bien informada y bien elegida.</p>
+      <p>AUREA es una tienda boliviana de belleza que reúne productos de piel, cabello, maquillaje y cuidado corporal con precios claros en bolivianos.</p>
+      <p>Creemos que comprar belleza debe ser fácil y sin sorpresas. Por eso, además de un catálogo transparente, te ofrecemos herramientas inteligentes: una calculadora de presupuesto y un comparador de productos para que decidas con información, no con intuición.</p>
+      <p>Atendemos pedidos por WhatsApp para que la belleza, en Bolivia, sea accesible, bien informada y bien elegida.</p>
     </div>
     <div class="mv">
       <div><h3>Misión</h3><p>Ofrecer una experiencia de compra clara, curada y accesible de productos de belleza, ayudando a cada persona a elegir según su necesidad real y su presupuesto.</p></div>
@@ -450,13 +453,15 @@ footer{border-top:1px solid var(--line);padding:50px 0}
 
 <script>
 /* ===== CONFIGURACIÓN ===== */
-const SHEET_CSV_URL = 'https://script.google.com/macros/s/AKfycbw_lcs-Ca3QmRkzCpfFYU1wO5hQBgt529eWEUNH6s1jxrRkJsabyi0E-Yt_F-JjeNhvpA/exec';
-const SHEET_CACHE_KEY = 'aurea_sheet_cache_v1';
-/* URL /exec entregada al profesor (debe ser la implementación del Code.gs nuevo) */
-const SURVEY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzhBuNlUB_rDI149kxpC4KELpE_uf8-Dkd0YdbiWu463XKr3QfTXdgQQ-I_BsOiv7M-qQ/exec';
-const WA_NUMBER = '59163445869';
+/* Reemplaza estas URLs si publicas nuevas versiones de tus hojas CSV */
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWPMZtT9u6KCFtadMUIRW66eNP2wxTf_0Ts857VeOAW5XQ297w_wCXY8h6SRPm2HKGF8UySxcsy-SL/pub?gid=0&single=true&output=csv';
 const COMMENTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWPMZtT9u6KCFtadMUIRW66eNP2wxTf_0Ts857VeOAW5XQ297w_wCXY8h6SRPm2HKGF8UySxcsy-SL/pub?gid=1166456797&single=true&output=csv';
 const RESULTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTWPMZtT9u6KCFtadMUIRW66eNP2wxTf_0Ts857VeOAW5XQ297w_wCXY8h6SRPm2HKGF8UySxcsy-SL/pub?gid=478168901&single=true&output=csv';
+
+/* AQUÍ ESTÁ TU NUEVA URL DE APPS SCRIPT IMPLEMENTADA */
+const SURVEY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw_lcs-Ca3QmRkzCpfFYU1wO5hQBgt529eWEUNH6s1jxrRkJsabyi0E-Yt_F-JjeNhvpA/exec';
+const WA_NUMBER = '59163445869';
+const SHEET_CACHE_KEY = 'aurea_sheet_cache_v1';
 
 const FALLBACK_PRODUCTS = [
   {id:'AUREA-0001',name:'Primer Facial Astra Zen Routine Face Primer Nro. 01 Veil X 30Ml',brand:'Astra',cat:'piel',sub:'Primer',price:75,tier:'Económico'},
@@ -545,7 +550,6 @@ function toast(msg, err){
   const t = $('toast'); t.textContent = msg; t.className = 'show' + (err ? ' err' : '');
   clearTimeout(toastT); toastT = setTimeout(() => t.className = '', 5200);
 }
-/* Envía a Apps Script, lee la respuesta real y desactiva el botón mientras tanto */
 async function enviar(fields, btn){
   const old = btn ? btn.textContent : '';
   if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; }
@@ -605,7 +609,6 @@ function renderGrid(cat){
   $('productGrid').scrollLeft = 0; focusRail();
   document.querySelectorAll('.cat-tab').forEach(b => b.setAttribute('aria-pressed', b.dataset.cat===F.cat?'true':'false'));
 }
-/* efecto ruleta: la tarjeta central se agranda */
 let ft;
 function focusRail(){
   const r = $('productGrid'), c = r.getBoundingClientRect(), mid = c.left + c.width/2;
@@ -710,7 +713,6 @@ $('surveyBtn').addEventListener('click', async () => {
     msg.textContent = 'No se pudo enviar. Revisa tu conexión e intenta de nuevo.'; toast('No se pudo enviar el formulario. Intenta de nuevo.', true);
   }
 });
-$('goCat').addEventListener('click', () => { renderGrid($('goCat').dataset.cat); $('catalogo').scrollIntoView({behavior:'smooth'}); });
 
 /* ===== COMENTARIOS ===== */
 let REMOTE_CMTS = [];
@@ -780,22 +782,61 @@ const rail = $('productGrid');
 rail.addEventListener('scroll', () => { cancelAnimationFrame(ft); ft = requestAnimationFrame(focusRail); }, {passive:true});
 $('railPrev').addEventListener('click', () => rail.scrollBy({left:-300, behavior:'smooth'}));
 $('railNext').addEventListener('click', () => rail.scrollBy({left:300, behavior:'smooth'}));
-(() => { /* arrastrar con el mouse */
+(() => {
   let down = false, sx = 0, sl = 0;
   rail.addEventListener('mousedown', e => { if(e.target.closest('button')) return; down = true; sx = e.pageX; sl = rail.scrollLeft; rail.style.scrollSnapType = 'none'; });
   window.addEventListener('mouseup', () => { if(down){ down = false; rail.style.scrollSnapType = ''; } });
   window.addEventListener('mousemove', e => { if(down) rail.scrollLeft = sl - (e.pageX - sx); });
 })();
 
+/* ===== NAVEGACIÓN POR PESTAÑAS ===== */
 const menuBtn = $('menuBtn'), nav = $('navlinks');
-menuBtn.addEventListener('click', () => {
-  const o = nav.classList.toggle('open'); menuBtn.classList.toggle('open', o); menuBtn.setAttribute('aria-expanded', o?'true':'false');
+const sections = document.querySelectorAll('.fondo-contenido > section');
+const heroSection = document.querySelector('.hero');
+
+function showSection(targetId) {
+  sections.forEach(s => s.classList.remove('active'));
+  if (targetId === '#inicio' || !targetId) {
+    heroSection.style.display = 'block';
+    if (targetId) {
+        const target = document.querySelector(targetId);
+        if (target) target.classList.add('active');
+    }
+  } else {
+    heroSection.style.display = 'none';
+    const target = document.querySelector(targetId);
+    if (target) target.classList.add('active');
+  }
+  document.querySelectorAll('.navlinks a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === targetId));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+showSection('#inicio');
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href^="#"]');
+  if (link) {
+    const targetId = link.getAttribute('href');
+    if (targetId && targetId !== '#') {
+      e.preventDefault();
+      showSection(targetId);
+      nav.classList.remove('open'); 
+      menuBtn.classList.remove('open'); 
+      menuBtn.setAttribute('aria-expanded','false');
+    }
+  }
 });
-nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); menuBtn.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }));
-/* resalta la sección activa en la barra */
-const secs = [...document.querySelectorAll('main section[id]')];
-const spy = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting) nav.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.getAttribute('href')==='#'+en.target.id)); }), {rootMargin:'-40% 0px -55% 0px'});
-secs.forEach(s => spy.observe(s));
+
+$('goCat').addEventListener('click', () => { 
+  renderGrid($('goCat').dataset.cat); 
+  showSection('#catalogo');
+});
+
+menuBtn.addEventListener('click', () => {
+  const o = nav.classList.toggle('open'); 
+  menuBtn.classList.toggle('open', o); 
+  menuBtn.setAttribute('aria-expanded', o?'true':'false');
+});
 
 $('cartOpen').addEventListener('click', () => $('drawer').classList.add('open'));
 $('cartClose').addEventListener('click', () => $('drawer').classList.remove('open'));
